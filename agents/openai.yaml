@@ -1,0 +1,4 @@
+interface:
+  display_name: "China FIRE Planner"
+  short_description: "通过自然对话建立可持续更新的可信个人财务基线并识别关键缺口"
+  default_prompt: "使用 $china-fire-planner，通过自然对话帮我建立一份 Preliminary Financial Baseline。"

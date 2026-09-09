@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# User financial data must never be committed.
+profile.yaml
+snapshots.csv
+reviews/
+imports/
+*.csv
+*.xlsx
+*.xls

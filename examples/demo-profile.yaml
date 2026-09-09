@@ -1,0 +1,41 @@
+schema_version: "0.1"
+base_currency: CNY
+baseline:
+  state: preliminary
+  created_at: 2026-09-09
+  updated_at: 2026-09-09
+income:
+  monthly_take_home:
+    value: 8000
+    status: estimated
+    source: user
+    confidence: medium
+    as_of: 2026-09-09
+assets:
+  status: estimated
+  items:
+    - id: bank-deposit
+      label: 银行存款
+      category: cash
+      amount: {value: 40000, status: estimated, source: user, confidence: medium, as_of: 2026-09-09}
+    - id: payment-wallets
+      label: 微信和支付宝余额
+      category: cash
+      amount: {value: 3000, status: estimated, source: user, confidence: medium, as_of: 2026-09-09}
+    - id: funds
+      label: 公募基金
+      category: investment
+      amount: {value: 20000, status: estimated, source: user, confidence: medium, as_of: 2026-09-09}
+liabilities:
+  status: known
+  items: []
+spending:
+  monthly_total: {value: null, status: unknown, source: null, confidence: null, as_of: null}
+goals:
+  - id: career-change
+    name: 两年内转行或出国学习
+    target_date: null
+    target_amount: null
+    status: estimated
+    source: user
+    confidence: medium
