@@ -129,3 +129,5 @@ git clone https://github.com/arayellie-prog/China-FIRE-Planner.git
 ## 当前边界
 
 V0.1 不提供完整 FIRE 年限计算、税务或社保计算、个股推荐、自动交易、银行/券商连接、自动账单解析或收益保证。
+
+本 skill 可以在 AutoClaw 上使用，点击：[免费获取5000万token](https://autoclaw.zhipuai.cn/redeem/?repo=China-FIRE-Planner&code=LAYEAQE2ZSNY)
