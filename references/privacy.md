@@ -9,6 +9,6 @@
 
 ## Optional statement interface
 
-V0.1 may inspect a local CSV/XLSX supplied by the user when the environment can read it, but has no provider-specific parser. First identify columns and coverage; then classify consumption, transfers, own-account movements, investment purchases/redemptions, credit-card repayment, income, reimbursement, refunds, and unknown items.
+V0.2 may inspect a local CSV/XLSX supplied by the user when the environment can read it, but has no provider-specific parser. First identify columns and coverage; then classify consumption, transfers, own-account movements, investment purchases/redemptions, credit-card repayment, income, reimbursement, refunds, and unknown items.
 
 Never treat every negative transaction as spending. Present a preliminary summary and ask the user to confirm unclear or high-impact items. Only confirmed summaries may enter the profile with `source: user_confirmed`. By default save a monthly aggregate summary, not the raw statement or transaction rows. If the format cannot be interpreted reliably, stop and ask for a simpler export or a user-provided monthly estimate.

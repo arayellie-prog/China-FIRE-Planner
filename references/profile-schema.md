@@ -51,7 +51,9 @@ Goals contain only user facts: `id`, `name`, optional `target_date`, optional `t
 
 - `profile.yaml`: user facts and user-confirmed classifications only.
 - `snapshots.csv`: deterministic monthly results: `period,assets_total,liabilities_total,net_worth,income,spending,surplus,savings_rate,baseline_state,data_quality`.
-- `reviews/YYYY-MM-DD-初步财务基线.md` for Chinese onboarding, or an equivalent user-language filename: the complete readable report, with derived interpretation and recommendations clearly labeled.
+- `reviews/YYYY-MM-DD-初步财务基线.md` for Chinese onboarding and `reviews/YYYY-MM-月度复盘.md` for a monthly review, or equivalent user-language filenames: complete readable reports with facts, derived results, interpretation, and recommendations clearly separated.
+
+Monthly pattern titles are Agent interpretation. Store them only in the dated review Markdown by default; do not add them to `profile.yaml` or `snapshots.csv`. The snapshot schema remains factual and deterministic in V0.2.
 
 Do not write derived totals back into fact fields. Append a snapshot only after the user confirms the underlying facts. Never revise a prior row silently; append a corrected row with an ISO timestamp if correction support becomes necessary.
 

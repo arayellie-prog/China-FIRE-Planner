@@ -91,10 +91,25 @@ def calculate(data: dict) -> dict:
         rate = None if income_value == 0 else (income_value - spending_value) / income_value
         savings_rate = derived(rate, statuses, confidences) if rate is not None else derived(None, ["unknown"], [])
 
+    previous = data.get("previous_net_worth")
+    if previous is None or net_worth["value"] is None:
+        net_worth_change = derived(None, ["unknown"], [])
+    else:
+        previous_value, previous_status, previous_conf = normalize(previous, "previous_net_worth")
+        if previous_value is None:
+            net_worth_change = derived(None, ["unknown"], [])
+        else:
+            net_worth_change = derived(
+                Decimal(str(net_worth["value"])) - previous_value,
+                [net_worth["status"], previous_status],
+                [net_worth["confidence"], previous_conf],
+            )
+
     return {
         "total_assets": assets,
         "total_liabilities": liabilities,
         "net_worth": net_worth,
+        "net_worth_change": net_worth_change,
         "monthly_surplus": surplus,
         "savings_rate": savings_rate,
     }

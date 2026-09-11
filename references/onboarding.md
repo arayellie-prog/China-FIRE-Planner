@@ -22,9 +22,7 @@ For proportions, use lightweight text visuals instead of requiring a chart tool:
 现金/存款   ¥21,500  37.4%  ███████
 ```
 
-Only show a proportion when the relevant total is known or estimated from complete components. Clearly label estimates. Keep the report layered: first the plain-language summary and Financial Portrait, then the financial snapshot, then money structure visualization, then goals, risks, and actions.
-
-When enough baseline data exists, insert the Financial Portrait after the opening summary. Read [financial-portrait.md](financial-portrait.md). It is a formal product feature describing current financial behavior, not a psychological test.
+Only show a proportion when the relevant total is known or estimated from complete components. Clearly label estimates. Keep the report layered: first the plain-language summary, then the financial snapshot, money structure visualization, goals, risks, and actions. Do not assign a persistent financial personality or portrait during onboarding.
 
 ## Report
 

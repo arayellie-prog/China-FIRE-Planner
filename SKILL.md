@@ -1,6 +1,6 @@
 ---
 name: china-fire-planner
-description: Help people in China establish and maintain a privacy-first personal financial baseline through natural conversation. Use for first-time financial checkups, organizing assets and liabilities, clarifying cash flow and life goals, or continuing a saved local profile; not for stock picking, market timing, automated trading, or guaranteed returns.
+description: Help people in China establish and maintain a privacy-first personal financial baseline through onboarding and natural monthly reviews. Use for first-time financial checkups, reviewing what changed this month, organizing assets and liabilities, clarifying cash flow and life goals, or continuing a saved local profile; not for stock picking, market timing, automated trading, or guaranteed returns.
 ---
 
 # China FIRE Planner
@@ -20,7 +20,7 @@ Help the user see their current financial state before planning investments or F
 
 ## Onboarding
 
-Read [references/onboarding.md](references/onboarding.md), [references/profile-schema.md](references/profile-schema.md), and [references/financial-portrait.md](references/financial-portrait.md) when enough baseline data exists to describe current behavior.
+Read [references/onboarding.md](references/onboarding.md) and [references/profile-schema.md](references/profile-schema.md).
 
 1. Explain that the session is a financial checkup, not an investment recommendation, and that unknown answers are acceptable.
 2. Gather the minimum raw facts needed: take-home income and stability; cash and deposits; payment-wallet balances; investments and other material assets; debts; important one-to-five-year life plans; then known or estimated monthly spending. The user may specify the interaction style in their prompt.
@@ -28,11 +28,22 @@ Read [references/onboarding.md](references/onboarding.md), [references/profile-s
 4. Before calculations, summarize the captured facts and resolve only ambiguities that could materially change the baseline.
 5. Run `scripts/finance_math.py` for totals, net worth, surplus, and savings rate. Do not perform these calculations ad hoc.
 6. Render the complete report defined in `references/onboarding.md` directly in the conversation, using the user's language. A short summary or file link is not a report. Give only one to three actions, each tied to a stated fact or data gap.
-   When the baseline supports it, include the Financial Portrait section; insufficient data must produce `探索型`, not a guess.
 7. With user approval, create or update a local profile directory using the schema. Save the same human-readable report under `reviews/`; preserve prior snapshots and reviews and never overwrite history silently.
 8. Finish only after checking the onboarding completion contract below.
 
-If spending is unknown, offer—but do not require—analysis of a user-provided local statement. V0.1 has no provider-specific parser. Follow the bounded workflow in [references/privacy.md](references/privacy.md): classify cautiously, ask the user to confirm high-impact or unclear items, save only a monthly summary by default, and do not retain raw statements unless explicitly requested.
+If spending is unknown, offer—but do not require—analysis of a user-provided local statement. V0.2 has no provider-specific parser. Follow the bounded workflow in [references/privacy.md](references/privacy.md): classify cautiously, ask the user to confirm high-impact or unclear items, save only a monthly summary by default, and do not retain raw statements unless explicitly requested.
+
+## Monthly review
+
+Read [references/monthly-review.md](references/monthly-review.md), [references/profile-schema.md](references/profile-schema.md), and [references/privacy.md](references/privacy.md).
+
+1. Read the current profile, prior snapshots, and the most recent relevant review before asking questions. If they are unavailable, say so; do not pretend to remember them.
+2. Decide what matters this month from that history. Start with an ordinary question such as “这个月发生了什么？” and follow the user's story. Do not send a monthly data form or a checklist of financial fields.
+3. Translate life facts into candidate financial fields. Preserve `unknown` where the story does not support a value, and ask only follow-ups that could materially change the review.
+4. Show the candidate updates in plain language and ask the user to confirm them before calculating or saving.
+5. Run `scripts/finance_math.py` for deterministic totals and changes. Compare with history without treating investment-market movement as saving unless the evidence supports that conclusion.
+6. Render the complete monthly review in the conversation. The Agent may create one fresh, playful, non-judgmental monthly pattern title grounded in facts; it is interpretation, not a fixed type or enduring personality.
+7. After confirmation, append the factual snapshot and save the review under `reviews/`. Update current facts without silently overwriting historical snapshots or reviews. Do not put the monthly pattern title in `snapshots.csv`.
 
 ## Local profile
 
@@ -64,4 +75,4 @@ In the final response, repeat the key snapshot, label remaining unknowns, and li
 
 ## Boundaries
 
-V0.1 does not provide a complete FIRE plan, tax or social-security calculations, product recommendations, provider-specific statement parsing, transaction-level bookkeeping, or complex portfolio analysis. Mention these only when directly relevant, and do not scaffold them for future use.
+V0.2 does not provide a complete FIRE plan, tax or social-security calculations, product recommendations, provider-specific statement parsing, transaction-level bookkeeping, complex portfolio analysis, or a persistent financial personality/portrait. Mention these only when directly relevant, and do not scaffold them for future use.

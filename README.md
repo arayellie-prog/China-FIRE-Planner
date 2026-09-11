@@ -2,7 +2,7 @@
 
 一个面向中国年轻人的隐私优先 Agent Skill：先帮你看清收入、支出、资产和目标，再逐步建立自己的财务基线。
 
-V0.1 已包含 onboarding、本地 Financial Profile、确定性计算、中文可读报告和 Financial Portrait。它不会连接银行或券商，不推荐具体证券，不预测市场，也不保证收益。
+V0.2 已包含 onboarding、本地 Financial Profile、确定性计算、中文可读报告，以及从生活变化出发的自然月度复盘。它不会连接银行或券商，不推荐具体证券，不预测市场，也不保证收益。
 
 ## 最快开始
 
@@ -110,6 +110,17 @@ git clone https://github.com/arayellie-prog/China-FIRE-Planner.git
 我会一次性告诉你目前知道的收入、资产和负债，请直接整理，不需要逐步提问。
 ```
 
+## 每月复盘
+
+完成第一次财务体检并保存本地档案后，可以在新的 Codex 任务中输入：
+
+```text
+使用 $china-fire-planner 读取我的本地财务档案，帮我做这个月的财务复盘。
+先看看历史，再从“这个月发生了什么”开始和我聊；不要让我填表。
+```
+
+Skill 会根据历史决定本月需要追问什么，把换工作、旅行、奖金、搬家或大额消费等生活事实转换成财务变化。你确认后，它才会计算并保存。月度报告可以有一个有趣但不评判人的当月标题；这不是长期人格标签，也不会写入数值快照。
+
 ## 数据和隐私
 
 用户数据应保存在 Skill 目录之外、由用户选择的本地目录中。默认不要上传、同步或提交真实财务数据。
@@ -121,11 +132,11 @@ git clone https://github.com/arayellie-prog/China-FIRE-Planner.git
 - `SKILL.md`：核心触发条件和工作流
 - `references/profile-schema.md`：本地 Financial Profile 数据结构
 - `references/onboarding.md`：Baseline 报告结构
-- `references/financial-portrait.md`：财务人格画像规则
+- `references/monthly-review.md`：自然月度复盘和月度标题规则
 - `references/privacy.md`：隐私和可选账单导入边界
 - `scripts/finance_math.py`：确定性财务计算
 - `examples/demo-profile.yaml`：匿名示例数据
 
 ## 当前边界
 
-V0.1 不提供完整 FIRE 年限计算、税务或社保计算、个股推荐、自动交易、银行/券商连接、自动账单解析或收益保证。
+V0.2 不提供完整 FIRE 年限计算、长期财务人格、税务或社保计算、个股推荐、自动交易、银行/券商连接、自动账单解析或收益保证。
