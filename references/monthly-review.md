@@ -11,7 +11,7 @@ A monthly review is a short conversation about what changed in the user's life a
 3. Follow the user's answer naturally. Translate salary changes, bonuses, travel, moving, medical costs, purchases, debt repayment, goal changes, and account-balance changes into candidate facts. Ask one focused follow-up at a time only when it materially affects the review. `unknown` is valid.
 4. Before calculation or saving, summarize what will change, what will stay unchanged, and what remains unknown. Ask for confirmation.
 5. Calculate totals, cash-flow results, savings rate, and net-worth change with `scripts/finance_math.py`. Compare against prior snapshots only when periods and definitions are comparable.
-6. Explain the month in plain language, then save after confirmation.
+6. Tell the story of the month first, using only a few key numbers as evidence. Then save after confirmation.
 
 Do not ask the user to provide “月末资产”“目标变化” or similar schema labels unless they already use those terms. A statement like “这个月换了工作，空档两周，还去了一趟成都” is valid input; the Agent determines which fields may have changed.
 
@@ -25,43 +25,51 @@ Do not ask the user to provide “月末资产”“目标变化” or similar s
 
 ## Monthly life pattern
 
-Create at most one short title that captures this month, not the person. The title is free-form Agent interpretation grounded in observed spending or events. Keep it playful, humane, and non-judgmental; immediately explain the facts behind it. Confidence may be high, medium, or low.
+Create at most one short title that captures this month, not the person. The title is free-form Agent interpretation grounded in observed spending or events. Make it sound like a human remembering their month, not a meeting summary or category label. Keep it playful, humane, and non-judgmental; immediately explain the facts behind it. Confidence may be high, medium, or low.
 
-These are style examples, not a taxonomy and not exhaustive: `稳稳攒钱月`, `目标冲刺月`, `人生体验月`, `过冬囤粮月`, `钱钱迷路月`, `计划赶不上变化月`, `大事落地月`, `仍在探索月`. Generate a better new title when the month calls for one. Never convert the title into a persistent “财务人格” or “Financial Portrait”.
+Examples of tone—not templates or a taxonomy—include `🌻 热热闹闹生活的一个月`, `☀️ 比平时热闹一点的 8 月`, and `🏡✈️ 家人来了，也出去走了走`. Generate a title from the actual month. Never convert it into a persistent “财务人格” or “Financial Portrait”.
 
 Major life events take priority over a cute title. If the evidence is thin, use a modest title such as `仍在探索月` or omit the pattern.
+
+## Writing priorities
+
+**Compress the stable, explain the unusual.** Recurring costs that stayed broadly normal—such as rent, connectivity, subscriptions, or an ordinary gym payment—should usually become one sentence: “固定生活开支基本稳定。” Do not list them line by line. Expand only changes that help explain why this month felt or cost different.
+
+Lead with lived experience, not accounts or categories. The reader should understand within 30 seconds what happened and why spending was higher or lower. Use a few relevant numbers to support that story; do not turn salary, rent, utilities, meals, and every purchase into a ledger.
+
+Use a small number of emojis as visual landmarks when they fit, such as `💰`, `🏡`, `✈️`, `📚`, or `🧭`. Do not decorate every heading or bullet.
+
+Recommendations may contain zero to three actions. Do not invent chores or demand category tracking to appear useful. “暂时不用改变什么” is a valid evidence-based conclusion.
 
 ## Report
 
 ```markdown
-# 月度财务复盘 — YYYY-MM
+# [根据真实生活生成的月度标题]
 
-## 这个月，一句话
-- 月度标题：自由生成；证据不足时可省略
-- 用大白话说明本月最重要的变化。
+用两三句话讲清这个月过着怎样的生活，以及为什么花得更多、更少或差不多。先说人和事情，再说钱。
 
-## 这个月发生了什么（用户事实）
-- 只写已确认事实，并标明估算和未知。
+## 🏡 这个月的生活
+- 围绕真正改变这个月的事件组织叙事。
+- 将稳定的固定开支压缩成一句话；只展开异常变化。
 
-## 数字发生了什么（确定性结果）
-- 总资产 / 总负债 / 净资产
-- 月收入 / 月支出 / 月结余 / 储蓄率
-- 较上次净资产变化
-- 无法计算的项目写 Unknown 及原因
+## 💰 钱袋子速览
+- 只选择帮助理解本月的关键数字，通常包括支出、结余以及必要的环比变化。
+- 不要默认逐项展示所有指标或账目。
+- 无法计算的重要项目写 Unknown 及原因。
 
-## 和过去相比
-- 只做口径可比的变化解释。
+## 值得注意的变化
+- 解释“为什么”，并只做口径可比的变化。
 - 无法区分储蓄与市场波动时明确说明。
 
-## 目标有没有被影响
+## 🎯 目标有没有被影响
 - 仅讨论已有目标或用户本月提出的新目标。
 
-## 下个月最值得做的事
-1. 最多三项，分别引用本月事实或数据缺口。
+## 🧭 下个月
+- 给出零至三项真正值得做的事；没有必要调整时直接说明。
 
-## Agent 解读与限制
-- 月度标题及解释属于 Agent interpretation，不是长期人格判断。
-- 列出假设、未知项和可信度。
+## 说明
+- 简短标明影响结论的估算、未知项或不可比口径。
+- 月度标题属于 Agent interpretation，不是长期人格判断。
 ```
 
 Save the report as `reviews/YYYY-MM-月度复盘.md` for Chinese. Append the confirmed deterministic row to `snapshots.csv`; do not add the monthly title, recommendations, or interpretation to the CSV.
