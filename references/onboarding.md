@@ -12,7 +12,9 @@ Write the full report in the conversation before or alongside saving it. Match t
 
 For a Chinese conversation, title the report `初步财务基线报告` and save it as `reviews/YYYY-MM-DD-初步财务基线.md`. Do not create an ad-hoc expense CSV in place of `profile.yaml` and `snapshots.csv`.
 
-The report is a user-facing explanation, not an audit dump. Start with a short plain-language portrait based on evidence, such as “目前看，你属于高储蓄型” or “目前还不能判断储蓄能力，因为月支出未知”. Do not label a person “月光族” unless the data actually supports spending at or above income, and frame it as a current pattern rather than a character judgment. Use warm, spoken Chinese when the user speaks Chinese.
+The report is a user-facing explanation, not an audit dump. Read [user-facing-output.md](user-facing-output.md) and open with a warm, evidence-based description of how the user currently relates to money. Include one current financial portrait when evidence supports it; use `探索型` when it does not. This is not a psychological test or permanent identity.
+
+Possible portrait language includes `老实人攒钱型` for steady accumulation, `想要就要型` for goal-driven saving, `人生是旷野型` for meaningful experience spending, `过冬仓鼠型` for a strong safety/liquidity preference, and `钱钱迷路型` when money exists but lacks clear jobs. These are style anchors, not a closed classifier. The Agent may write a better fitting, non-judgmental name. Explain every portrait with specific facts, include confidence, and never infer spending behavior from income alone.
 
 For proportions, use lightweight text visuals instead of requiring a chart tool:
 
@@ -22,61 +24,39 @@ For proportions, use lightweight text visuals instead of requiring a chart tool:
 现金/存款   ¥21,500  37.4%  ███████
 ```
 
-Only show a proportion when the relevant total is known or estimated from complete components. Clearly label estimates. Keep the report layered: first the plain-language summary, then the financial snapshot, money structure visualization, goals, risks, and actions. Do not assign a persistent financial personality or portrait during onboarding.
+Only show a proportion when the relevant total is known or estimated from complete components. Clearly label estimates. Keep the report layered around meaning: current portrait and life context first, then a compact money overview, goals, gaps, and actions.
 
 ## Report
 
 ```markdown
-# 初步财务基线报告 — YYYY-MM-DD
+# [一个温暖、有生活感的 Baseline 标题] — YYYY-MM-DD
 
-## 先说结论
-- 你现在属于：高储蓄型 / 收支接近平衡 / 目前无法判断（选择有事实依据的一项）
-- 用大白话说：用一两句话解释收入、支出、结余和当前状态。
-- 你做得比较好的地方：
-- 现在最需要看清的地方：
+用两三句话讲清用户目前过着怎样的财务生活、钱主要在支持什么，以及最值得关注的事情。
 
-## 数据状态
-- 已知：
-- 估算：
-- 未知：
+## 🌱 你现在的财务画像
+- 当前画像：[基于事实生成；证据不足时为探索型]
+- 用口语解释这个名字，并列出一至三条事实依据。
+- 画像可信度：高 / 中 / 低
 
-## 财务快照
-- 总资产：
-- 总负债：
-- 净资产：
-- 月收入：
-- 月支出：
-- 月结余：
-- 储蓄率：
+## 💰 钱袋子速览
+- 只展示帮助用户理解现状的关键数字；不要机械输出所有字段。
+- 将 Known / Estimated / Unknown 融入对应数字或简短说明，不单独制造审计清单。
 
-## 资产结构（文字可视化）
-- 用横向条形图展示资产类别及占比；没有可靠金额时写“暂时无法展示”。
+## 🧺 钱现在放在哪里
+- 用简短叙述和必要的横向条形图说明资产结构。
+- 解释结构意味着什么，不要只列账户和金额。
 
-## 当前资金结构
-- 钱目前在哪里
-- 哪些钱已有用户确认的用途
-- 哪些钱用途尚未明确
+## 🧭 钱要带你去哪里
+- 用用户的人生目标组织这一节，并说明当前资金与目标之间的关系。
+- 只展开真正重要的优势、风险或未知，不做长清单。
 
-## 重要人生目标
-- 用户提出的目标、时间、金额及未知项
+## ✨ 接下来
+- 零至三项真正必要的行动；若暂时无需改变，明确说出来。
 
-## 当前优势
-- 判断——因为[具体事实]
-
-## 当前风险或缺口
-- 判断——因为[具体事实或缺失数据]
-
-## 建议资金结构
-- 日常资金 / 安全资金 / 有明确任务的钱 / 长期资金
-- 未解决的金额标为待定，不得写成当前事实
-
-## 接下来最重要的行动
-1. 最多三项具体行动
-
-## 假设与限制
-- 哪些是估算、未知、计算结果或尚未评估
+## 说明
+- 简短列出会影响结论的估算、未知和限制。
 ```
 
-Display unavailable calculations as `Unknown — needs ...`, not `¥0`, `0%`, or a guessed range. A strength, risk, or action must cite at least one captured fact or data gap. Avoid generic praise and long advice lists.
+Display unavailable calculations as `Unknown — needs ...`, not `¥0`, `0%`, or a guessed range. A portrait, strength, risk, or action must cite at least one captured fact or data gap. Avoid generic praise, long advice lists, and section-by-section data dumps.
 
 Before finishing, verify that the report is understandable without opening YAML or CSV. In the final chat response, include the key numbers, unknowns, and next actions even when files were saved successfully.

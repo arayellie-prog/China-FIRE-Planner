@@ -33,6 +33,8 @@ Major life events take priority over a cute title. If the evidence is thin, use 
 
 ## Writing priorities
 
+Apply the shared requirements in [user-facing-output.md](user-facing-output.md).
+
 **Compress the stable, explain the unusual.** Recurring costs that stayed broadly normal—such as rent, connectivity, subscriptions, or an ordinary gym payment—should usually become one sentence: “固定生活开支基本稳定。” Do not list them line by line. Expand only changes that help explain why this month felt or cost different.
 
 Lead with lived experience, not accounts or categories. The reader should understand within 30 seconds what happened and why spending was higher or lower. Use a few relevant numbers to support that story; do not turn salary, rent, utilities, meals, and every purchase into a ledger.

@@ -11,6 +11,7 @@ Help the user see their current financial state before planning investments or F
 
 - Treat `unknown` as valid. Never invent values or convert missing data to zero.
 - Keep user facts, deterministic derived results, and recommendations separate.
+- User-facing reports must tell the user's financial life story rather than dump fields. Read [references/user-facing-output.md](references/user-facing-output.md) before rendering either a Baseline or Monthly Review.
 - Show current money structure separately from any proposed structure.
 - Ask for raw facts in ordinary language; do not require financial terminology or a transaction ledger.
 - Do not recommend asset allocation before understanding when the money may be needed.
@@ -20,7 +21,7 @@ Help the user see their current financial state before planning investments or F
 
 ## Onboarding
 
-Read [references/onboarding.md](references/onboarding.md) and [references/profile-schema.md](references/profile-schema.md).
+Read [references/onboarding.md](references/onboarding.md), [references/user-facing-output.md](references/user-facing-output.md), and [references/profile-schema.md](references/profile-schema.md).
 
 1. Explain that the session is a financial checkup, not an investment recommendation, and that unknown answers are acceptable.
 2. Gather the minimum raw facts needed: take-home income and stability; cash and deposits; payment-wallet balances; investments and other material assets; debts; important one-to-five-year life plans; then known or estimated monthly spending. The user may specify the interaction style in their prompt.
@@ -35,7 +36,7 @@ If spending is unknown, offer—but do not require—analysis of a user-provided
 
 ## Monthly review
 
-Read [references/monthly-review.md](references/monthly-review.md), [references/profile-schema.md](references/profile-schema.md), and [references/privacy.md](references/privacy.md).
+Read [references/monthly-review.md](references/monthly-review.md), [references/user-facing-output.md](references/user-facing-output.md), [references/profile-schema.md](references/profile-schema.md), and [references/privacy.md](references/privacy.md).
 
 1. Read the current profile, prior snapshots, and the most recent relevant review before asking questions. If they are unavailable, say so; do not pretend to remember them.
 2. Decide what matters this month from that history. Start with an ordinary question such as “这个月发生了什么？” and follow the user's story. Do not send a monthly data form or a checklist of financial fields.
@@ -75,4 +76,4 @@ In the final response, repeat the key snapshot, label remaining unknowns, and li
 
 ## Boundaries
 
-V0.2 does not provide a complete FIRE plan, tax or social-security calculations, product recommendations, provider-specific statement parsing, transaction-level bookkeeping, complex portfolio analysis, or a persistent financial personality/portrait. Mention these only when directly relevant, and do not scaffold them for future use.
+V0.2 does not provide a complete FIRE plan, tax or social-security calculations, product recommendations, provider-specific statement parsing, transaction-level bookkeeping, complex portfolio analysis, or a validated psychological personality test. A financial portrait is a friendly description of the current evidence, not a permanent identity. Mention excluded features only when directly relevant, and do not scaffold them for future use.
