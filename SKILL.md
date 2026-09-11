@@ -21,7 +21,7 @@ Help the user see their current financial state before planning investments or F
 
 ## Onboarding
 
-Read [references/onboarding.md](references/onboarding.md), [references/user-facing-output.md](references/user-facing-output.md), and [references/profile-schema.md](references/profile-schema.md).
+Read [references/onboarding.md](references/onboarding.md), [references/financial-portrait.md](references/financial-portrait.md), [references/user-facing-output.md](references/user-facing-output.md), and [references/profile-schema.md](references/profile-schema.md). All four are required for Baseline onboarding.
 
 1. Explain that the session is a financial checkup, not an investment recommendation, and that unknown answers are acceptable.
 2. Gather the minimum raw facts needed: take-home income and stability; cash and deposits; payment-wallet balances; investments and other material assets; debts; important one-to-five-year life plans; then known or estimated monthly spending. The user may specify the interaction style in their prompt.
@@ -29,8 +29,11 @@ Read [references/onboarding.md](references/onboarding.md), [references/user-faci
 4. Before calculations, summarize the captured facts and resolve only ambiguities that could materially change the baseline.
 5. Run `scripts/finance_math.py` for totals, net worth, surplus, and savings rate. Do not perform these calculations ad hoc.
 6. Render the complete report defined in `references/onboarding.md` directly in the conversation, using the user's language. A short summary or file link is not a report. Give only one to three actions, each tied to a stated fact or data gap.
+   Always include the independent Financial Portrait module defined in `references/financial-portrait.md`; when evidence is insufficient, render it as `探索型` rather than omitting or replacing it with a facts summary.
 7. With user approval, create or update a local profile directory using the schema. Save the same human-readable report under `reviews/`; preserve prior snapshots and reviews and never overwrite history silently.
 8. Finish only after checking the onboarding completion contract below.
+
+China FIRE Planner is not a bookkeeping app. Never require users to record every transaction or track all spending for 30 days. Unknown spending is valid; offer lightweight estimation or optional statement import instead.
 
 If spending is unknown, offer—but do not require—analysis of a user-provided local statement. V0.2 has no provider-specific parser. Follow the bounded workflow in [references/privacy.md](references/privacy.md): classify cautiously, ask the user to confirm high-impact or unclear items, save only a monthly summary by default, and do not retain raw statements unless explicitly requested.
 
