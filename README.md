@@ -29,6 +29,38 @@ V0.2 已包含 onboarding、本地 Financial Profile、确定性计算、中文�
 
 尚未在 macOS、Linux、Claude Code 或其他 Agent 环境中完成本项目的完整安装与运行验证，因此本文不声称这些平台已经得到支持。它们可能支持相同格式，但请将其视为自行验证路径。
 
+## 版本和更新
+
+你不需要等到最终版才开始使用。项目会先发布已经可用的版本，例如 Baseline 版本，再逐步增加月度复盘等功能。每次功能变化都会更新版本说明，并在需要时发布新的 GitHub Release 或 Tag。
+
+更新 Skill 时，请先保存好自己的本地财务档案，再更新 Skill 文件。`profile.yaml`、`snapshots.csv` 和 `reviews/` 是用户数据，不属于这个公开仓库；更新 Skill 不会删除它们。
+
+### 使用 Codex 安装的用户
+
+在 Codex 的新任务中再次输入：
+
+```text
+使用 $skill-installer 从 https://github.com/arayellie-prog/China-FIRE-Planner 重新安装或更新 china-fire-planner。
+```
+
+更新完成后，重新打开 Codex，并新建一个任务。已经打开的旧任务可能仍然使用更新前已经加载的 Skill 规则，因此不要只在旧对话中重新生成。
+
+### 使用 Git 的用户
+
+在之前 clone 仓库的文件夹中打开 PowerShell（Windows）或 Terminal（macOS），执行：
+
+```bash
+git pull
+```
+
+然后把更新后的 `china-fire-planner` 文件夹重新上传到 Codex 的 Skills 管理界面，或使用上面的 `$skill-installer` 更新方式。完成后重新打开 Codex 并新建任务。
+
+### 使用 Download ZIP 的用户
+
+重新从 GitHub 下载最新 ZIP，解压后，在 Codex 的 Skills 管理界面重新上传新的 `china-fire-planner` 文件夹。完成后重新打开 Codex 并新建任务。不要覆盖或删除你单独保存的本地财务数据目录。
+
+用户不必为每次功能更新重新做 onboarding；只要本地 Financial Profile 仍在，新版本会继续读取它。若新版本改变了数据结构，README 或 Release 说明会明确写出迁移要求。
+
 ## 安装方式一：在 Codex 中从 GitHub 安装（推荐）
 
 这条方式不要求你会 Git，也不要求你知道 Skill 文件应该放在哪里。
